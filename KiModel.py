@@ -9,6 +9,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Input
 from tensorflow.keras.models import load_model
+from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -16,6 +17,17 @@ import psutil
 import time
 import csv
 
+
+print("TensorFlow version:", tf.__version__)
+print("GPU available:", tf.config.list_physical_devices('GPU'))
+
+print("TensorFlow version:", tf.__version__)
+print("GPU Available:", tf.config.list_physical_devices('GPU'))
+print(device_lib.list_local_devices())
+
+
+print("Built with CUDA:", tf.test.is_built_with_cuda())
+print("GPU available:", tf.config.list_physical_devices('GPU'))
 
 pfadData = '../Testdaten/final_df2_cleaned.csv'
 data = pd.read_csv(pfadData)# , encoding='ISO-8859-1', delimiter=';', quoting=csv.QUOTE_ALL)
