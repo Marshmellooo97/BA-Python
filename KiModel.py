@@ -16,14 +16,28 @@ import psutil
 import time
 import csv
 
-print("Hallo")
-pfadData = '../Testdaten/KiData.csv'
-data = pd.read_csv(pfadData, encoding='ISO-8859-1', delimiter=';', quoting=csv.QUOTE_ALL)
 
-data = data.drop(['UPPER_LIMIT', 'LOWER_LIMIT', 'NOMINAL', 'TOLERANCE', 'PART_NUMBER', 'STATION_NUMBER','WORKORDER_NUMBER','STATION_DESC','WORKORDER_DESC'], axis=1)
-print(data.nunique())
-
-id_counts = data['BOOKING_ID'].value_counts()
-
+pfadData = '../Testdaten/final_df2_cleaned.csv'
+data = pd.read_csv(pfadData)# , encoding='ISO-8859-1', delimiter=';', quoting=csv.QUOTE_ALL)
 print(data.head())
+
+X = data.drop('Gesamt_MEASURE_FAIL_CODE', axis=1)
+Y = data['Gesamt_MEASURE_FAIL_CODE']
+
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=101)
+scaler = MinMaxScaler()
+x_train = scaler.fit_transform(x_train)
+x_test = scaler.transform(x_test)
+
+
+model = Sequential()
+model.add(Dense(units=30, activation='relu'))
+model.add(Dense(units=15, activation='relu'))
+model.add(Dense(units=1, activation='sigmoid'))
+model.compile(loss='binary_crossentropy', optimizer='adam')
+
+model.fit(x=x_train, y=y_train, epochs=20, validation_data=(x_test, y_test), verbose=1)
+
+pd.DataFrame(model.history.history).plot()
+
 print("Hallo")
