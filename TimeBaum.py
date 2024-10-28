@@ -27,9 +27,7 @@ def BaumDatenvorbereitung():
 def BaumModell():
     global modelBaum  # Globalen Zugriff deklarieren
     # Entscheidungsbaum-Modell trainieren
-    modelBaum = DecisionTreeClassifier(random_state=101, min_samples_leaf=40)
-    
-def BaumModellTrainieren():    
+    modelBaum = DecisionTreeClassifier(random_state=101, min_samples_leaf=40)  
     modelBaum.fit(x_train, y_train)
 
 def BaumVorhersagen():

@@ -15,7 +15,7 @@ Y = data['Gesamt_MEASURE_FAIL_CODE']
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=123)
 
 # Entscheidungsbaum-Modell trainieren
-modelBaum = DecisionTreeClassifier(random_state=101, min_samples_leaf=40)
+modelBaum = DecisionTreeClassifier(random_state=101) #, min_samples_leaf=40)
 modelBaum.fit(x_train, y_train)
 
 # Vorhersagen

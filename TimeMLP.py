@@ -41,11 +41,9 @@ def MLPModell():
 
     #optimizer = Adam(learning_rate=0.0001)  # Optional, falls benötigt
     model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy'])
-
-def MLPModellTrainieren():
-    global model, x_train, y_train, x_test, y_test  # Globalen Zugriff deklarieren
+    model, x_train, y_train, x_test, y_test  # Globalen Zugriff deklarieren
     early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-    history = model.fit(x_train, y_train, epochs=20, validation_data=(x_test, y_test), 
+    history = model.fit(x_train, y_train, epochs=2000, validation_data=(x_test, y_test), 
                         verbose=1, callbacks=[early_stopping])
     return history  # Rückgabe des Trainingsverlaufs (optional)
 

@@ -1,7 +1,7 @@
 import pandas as pd
 from TimeDatenvorbereitung import TimeDatenvorbereitung
-from TimeBaum import BaumDatenvorbereitung, BaumModell, BaumModellTrainieren, BaumVorhersagen
-from TimeMLP import MLPDatenvorbereitung, MLPModell, MLPModellTrainieren, MLPVorhersagen
+from TimeBaum import BaumDatenvorbereitung, BaumModell, BaumVorhersagen
+from TimeMLP import MLPDatenvorbereitung, MLPModell, MLPVorhersagen
 from memory_profiler import memory_usage
 import time
 
@@ -32,11 +32,9 @@ if __name__ == "__main__":
         (TimeDatenvorbereitung, "TimeDatenvorbereitung"),
         (BaumDatenvorbereitung, "BaumDatenvorbereitung"),
         (BaumModell, "BaumModell"),
-        (BaumModellTrainieren, "BaumModellTrainieren"),
         (BaumVorhersagen, "BaumVorhersagen"),
         (MLPDatenvorbereitung, "MLPDatenvorbereitung"),
         (MLPModell, "MLPModell"),
-        (MLPModellTrainieren, "MLPModellTrainieren"),
         (MLPVorhersagen, "MLPVorhersagen")
     ]
 
